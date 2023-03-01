@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 
-@export var speed = 5
+@export var default_speed = 5
+@export var sprint_speed = 10
 @export var jump_velocity = 4.5
 @export var mouse_sensitivity = 0.05
 
@@ -10,7 +11,8 @@ extends CharacterBody3D
 @onready var animation_player = $Head/Camera3D/AnimationPlayer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") + 2
+var sprinting = false
 
 
 func _ready():
@@ -18,6 +20,13 @@ func _ready():
 
 
 func _physics_process(delta):
+	var speed = default_speed
+	sprinting = false
+	
+	if Input.is_action_pressed('sprint'):
+		speed = sprint_speed
+		sprinting = true
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -36,9 +45,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-		
+
 	if velocity != Vector3():
-		animation_player.play("Head Bob")
+		animation_player.play("Sprint Head Bob" if sprinting else "Head Bob")
 
 	move_and_slide()
 

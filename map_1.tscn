@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6ak6j3ou6doy"]
+[gd_scene load_steps=6 format=3 uid="uid://c6ak6j3ou6doy"]
 
 [ext_resource type="PackedScene" uid="uid://713qjy160bnc" path="res://player.tscn" id="1_a2jjd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l86vn"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7hrqu"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ppfgr"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hhpoc"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Map1" type="Node3D"]
@@ -25,3 +30,77 @@ shape = SubResource("ConcavePolygonShape3D_7hrqu")
 
 [node name="Player" parent="." instance=ExtResource("1_a2jjd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, -4, 0.257517, -4)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 7, 0.257517, -4)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 7, 0.257517, 5)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 1, 0.257517, 5)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0.257517, 5)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0.857517, 5)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D6/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, -1, 0.857517, 5)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, -1, 1.45752, 5)
+mesh = SubResource("BoxMesh_ppfgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Obstacles/MeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/MeshInstance3D8/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhpoc")
