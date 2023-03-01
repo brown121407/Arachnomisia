@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6ak6j3ou6doy"]
+[gd_scene load_steps=6 format=3 uid="uid://c56uupo1tg7ps"]
 
-[ext_resource type="PackedScene" uid="uid://713qjy160bnc" path="res://player.tscn" id="1_a2jjd"]
+[ext_resource type="PackedScene" uid="uid://dbj6ltn61remy" path="res://scenes/player.tscn" id="1_v0xg3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l86vn"]
 
@@ -28,7 +28,7 @@ mesh = SubResource("BoxMesh_l86vn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7hrqu")
 
-[node name="Player" parent="." instance=ExtResource("1_a2jjd")]
+[node name="Player" parent="." instance=ExtResource("1_v0xg3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Obstacles" type="Node3D" parent="."]

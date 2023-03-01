@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2dibfaxvtgv4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_37l44"]
+
+[node name="Gun" type="MeshInstance3D"]
+transform = Transform3D(0.1, -5.2318e-17, 3.48787e-16, 3.48787e-17, 0.15, -3.48787e-16, -3.48787e-17, 5.2318e-17, 1, 0.395326, -0.335011, -0.692656)
+mesh = SubResource("BoxMesh_37l44")
+
+[node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 1.16069e-22, -1.06266e-21, 7.45019e-23, 1, -5.62112e-22, 1.23857e-23, -3.8065e-25, 1, 0, 0, -0.560667)

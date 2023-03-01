@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://713qjy160bnc"]
+[gd_scene load_steps=9 format=3 uid="uid://dbj6ltn61remy"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_7y1ax"]
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_2tb88"]
+[ext_resource type="PackedScene" uid="uid://c2dibfaxvtgv4" path="res://gun.tscn" id="2_14852"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vsvyq"]
 
@@ -61,8 +62,13 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_7y1ax")
-jump_velocity = 4.0
+script = ExtResource("1_2tb88")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.294118, 0.764706, 0.717647, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_volumetric_fog_energy = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vsvyq")
@@ -81,8 +87,4 @@ libraries = {
 "": SubResource("AnimationLibrary_wv7qf")
 }
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.294118, 0.764706, 0.717647, 1)
-light_energy = 0.5
-light_indirect_energy = 0.5
-light_volumetric_fog_energy = 0.5
+[node name="Gun" parent="Head" instance=ExtResource("2_14852")]
