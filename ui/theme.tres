@@ -1,0 +1,72 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b813frhgu7qyi"]
+
+[ext_resource type="FontFile" uid="uid://dtk0f3b302fjq" path="res://fonts/retro_gaming.ttf" id="1_hu1sp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0b4j"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.0862745, 0.0588235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.168627, 0.254902, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4rmw"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.0862745, 0.0588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjil6"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u234"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.141176, 0.101961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.286275, 0.364706, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fka3u"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.0862745, 0.0588235, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.360784, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8ett"]
+bg_color = Color(0, 0.180392, 0.12549, 1)
+
+[resource]
+default_font = ExtResource("1_hu1sp")
+default_font_size = 22
+Button/colors/font_color = Color(0.00392157, 0.662745, 0, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_h0b4j")
+Button/styles/hover = SubResource("StyleBoxFlat_t4rmw")
+Button/styles/normal = SubResource("StyleBoxFlat_fjil6")
+Button/styles/pressed = SubResource("StyleBoxFlat_2u234")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_fka3u")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_h8ett")
+VBoxContainer/constants/separation = 12

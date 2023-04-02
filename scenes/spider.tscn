@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://73xrkxb5eosb"]
+
+[ext_resource type="PackedScene" uid="uid://bbi8b6ontra4f" path="res://scenes/spider_leg.tscn" id="1_bbjea"]
+[ext_resource type="Script" path="res://scripts/spider.gd" id="1_uvtg6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_to3kd"]
+size = Vector3(0.577983, 0.280674, 0.811501)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pog7x"]
+size = Vector3(0.229071, 0.192179, 0.257717)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p8f5p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tfcyq"]
+
+[node name="Spider" type="CharacterBody3D"]
+script = ExtResource("1_uvtg6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_to3kd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.553059)
+shape = SubResource("BoxShape3D_pog7x")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.577983, 0, 0, 0, 0.280674, 0, 0, 0, 0.811501, 0, 0, 0)
+mesh = SubResource("BoxMesh_p8f5p")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.225529, 0, 0, 0, 0.190532, 0, 0, 0, 0.256903, 0, 0, 0.552631)
+mesh = SubResource("BoxMesh_tfcyq")
+
+[node name="Legs" type="Node3D" parent="."]
+
+[node name="Left" type="Node3D" parent="Legs"]
+
+[node name="SpiderLeg" parent="Legs/Left" instance=ExtResource("1_bbjea")]
+transform = Transform3D(0.916216, 0, -0.400685, 0, 1, 0, 0.400685, 0, 0.916216, 0.293509, 0, 0.341168)
+
+[node name="SpiderLeg2" parent="Legs/Left" instance=ExtResource("1_bbjea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281144, 0, 0)
+
+[node name="SpiderLeg3" parent="Legs/Left" instance=ExtResource("1_bbjea")]
+transform = Transform3D(0.930712, 0, 0.365754, 0, 1, 0, -0.365754, 0, 0.930712, 0.292795, 0, -0.334968)
+
+[node name="Right" type="Node3D" parent="Legs"]
+
+[node name="SpiderLeg4" parent="Legs/Right" instance=ExtResource("1_bbjea")]
+transform = Transform3D(-0.87451, 0, 0.485008, 0, 1, 0, -0.485008, 0, -0.87451, -0.303204, 0, -0.337035)
+
+[node name="SpiderLeg5" parent="Legs/Right" instance=ExtResource("1_bbjea")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.290839, 0, 0.00413304)
+
+[node name="SpiderLeg6" parent="Legs/Right" instance=ExtResource("1_bbjea")]
+transform = Transform3D(-0.934372, 0, -0.356298, 0, 1, 0, 0.356298, 0, -0.934372, -0.302489, 0, 0.339101)

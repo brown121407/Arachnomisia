@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfhcy35dvdmqt"]
+
+[sub_resource type="Environment" id="Environment_dr7lm"]
+background_energy_multiplier = 0.5
+ambient_light_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+fog_enabled = true
+fog_light_color = Color(0.278431, 0.45098, 0.364706, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_dr7lm")
