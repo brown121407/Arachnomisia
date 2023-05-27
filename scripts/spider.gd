@@ -2,14 +2,17 @@ extends CharacterBody3D
 
 @export var movement_speed: float = 2.5
 @export var movement_target: Node3D
+@export var leg_dist_threshold := 1.25
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
 	for leg in $Legs/Left.get_children():
+		leg.dist_threshold = leg_dist_threshold
 		for body in leg.get_leg_bodies():
 			add_collision_exception_with(body)	
 	for leg in $Legs/Right.get_children():
+		leg.dist_threshold = leg_dist_threshold		
 		for body in leg.get_leg_bodies():
 			add_collision_exception_with(body)	
 
@@ -27,6 +30,7 @@ func actor_setup():
 func _physics_process(_delta):
 	if movement_target:
 		var dir := global_position - movement_target.global_position
+		dir.y = 0
 		look_at(global_position + dir)
 		navigation_agent.target_position = movement_target.global_position
 		

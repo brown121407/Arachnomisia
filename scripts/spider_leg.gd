@@ -17,7 +17,9 @@ func get_leg_bodies() -> Array:
 
 func _physics_process(delta: float) -> void:
 	var dist: float = step_target.global_position.distance_to(target.global_position)
-#	print('FOOBAR', step_target.position, target.position, dist)
 	if dist > dist_threshold:
-		target.global_position = step_target.global_position
+		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+		tween.tween_property(target, 'global_position', step_target.global_position, 0.15)
+
+		
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbi8b6ontra4f"]
+[gd_scene load_steps=5 format=3 uid="uid://bbi8b6ontra4f"]
 
 [ext_resource type="PackedScene" uid="uid://ddytrv7a8nbfn" path="res://blender/spider-leg.blend" id="1_q5nu2"]
 [ext_resource type="Script" path="res://scripts/spider_leg.gd" id="2_lflib"]
@@ -6,8 +6,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5mkd"]
 size = Vector3(0.117044, 0.851609, 0.0865764)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kklbx"]
 
 [node name="SpiderLeg" instance=ExtResource("1_q5nu2")]
 script = ExtResource("2_lflib")
@@ -57,7 +55,3 @@ shape = SubResource("BoxShape3D_i5mkd")
 [node name="Target" type="Marker3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3942, -0.369104, 2.38419e-07)
 top_level = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Target" index="0"]
-transform = Transform3D(0.32291, 0, 0, 0, 0.456005, 0, 0, 0, 0.309106, 0, 0, 0)
-mesh = SubResource("SphereMesh_kklbx")
