@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b813frhgu7qyi"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b813frhgu7qyi"]
 
 [ext_resource type="FontFile" uid="uid://dtk0f3b302fjq" path="res://fonts/retro_gaming.ttf" id="1_hu1sp"]
 
@@ -55,6 +55,11 @@ border_color = Color(0, 0.360784, 0.105882, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8ett"]
 bg_color = Color(0, 0.180392, 0.12549, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ful1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyuk1"]
+bg_color = Color(1, 0.298039, 0.517647, 1)
+
 [resource]
 default_font = ExtResource("1_hu1sp")
 default_font_size = 22
@@ -69,4 +74,6 @@ MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 8
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_h8ett")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ful1j")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_uyuk1")
 VBoxContainer/constants/separation = 12
