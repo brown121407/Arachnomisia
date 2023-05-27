@@ -8,9 +8,9 @@
 [ext_resource type="Shader" uid="uid://b1dhbhg6xqy2v" path="res://shaders/pixelation.tres" id="3_mymvn"]
 [ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="6_f4ebw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3i7c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rr3g"]
 shader = ExtResource("3_mymvn")
-shader_parameter/Pixelisation = 512.0
+shader_parameter/Pixelisation = 768.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_l4mbv"]
 font_size = 48
@@ -37,14 +37,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527391, -2.5284)
 [node name="Spider2" parent="Background" instance=ExtResource("2_xkjd8")]
 transform = Transform3D(0.917734, 0, -0.397196, 0, 1, 0, 0.397196, 0, 0.917734, 2.5423, 0.527391, 0.185968)
 
-[node name="Spider3" parent="Background" instance=ExtResource("2_xkjd8")]
-transform = Transform3D(0.779119, 0, 0.626876, 0, 1, 0, -0.626876, 0, 0.779119, -3.71366, 0.527391, -2.64503)
+[node name="Spider9" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(0.309478, 0, -0.392712, 0, 0.5, 0, 0.392712, 0, 0.309478, 3.1571, 0.215975, 2.18198)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_w3i7c")
-scale = Vector2(15, 8.4375)
-texture = ExtResource("3_fd1d3")
-centered = false
+[node name="Spider8" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(1.4302, 0, -1.00848, 0, 1.75, 0, 1.00848, 0, 1.4302, 2.73991, 0.527391, -3.08759)
+
+[node name="Spider4" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(0.391407, 0, -0.207484, 0, 0.443, 0, 0.207484, 0, 0.391407, 1.51903, 0.219545, 2.33154)
+
+[node name="Spider5" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(0.440998, 0, -0.0420671, 0, 0.443, 0, 0.0420671, 0, 0.440998, -1.23673, 0.219545, 1.84282)
+
+[node name="Spider6" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(0.442062, 0, 0.0288116, 0, 0.443, 0, -0.0288116, 0, 0.442062, -0.345119, 0.219545, 0.687547)
+
+[node name="Spider7" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(0.247094, 0, 0.367687, 0, 0.443, 0, -0.367687, 0, 0.247094, -3.24446, 0.219545, 1.83339)
+
+[node name="Spider3" parent="Background" instance=ExtResource("2_xkjd8")]
+transform = Transform3D(0.779119, 0, 0.626876, 0, 1, 0, -0.626876, 0, 0.779119, -3.71366, 0.219545, -2.64503)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -55,6 +67,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_f4ebw")
 script = ExtResource("2_yoexd")
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+material = SubResource("ShaderMaterial_6rr3g")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fd1d3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 layout_mode = 1

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://73xrkxb5eosb"]
+[gd_scene load_steps=14 format=3 uid="uid://73xrkxb5eosb"]
 
 [ext_resource type="PackedScene" uid="uid://bbi8b6ontra4f" path="res://scenes/spider_leg.tscn" id="1_bbjea"]
 [ext_resource type="Script" path="res://scripts/spider.gd" id="1_uvtg6"]
+[ext_resource type="Shader" uid="uid://v5sypqgj8kyy" path="res://shaders/spider_leg.tres" id="2_4riiy"]
+[ext_resource type="Shader" uid="uid://b4a0sxx0m87jp" path="res://shaders/spider_eye.tres" id="3_sr3bf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to3kd"]
 size = Vector3(0.577983, 0.280674, 0.811501)
@@ -13,9 +15,26 @@ size = Vector3(0.229071, 0.192179, 0.257717)
 radius = 0.448269
 height = 1.27942
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8en2e"]
+render_priority = 0
+shader = ExtResource("2_4riiy")
+
 [sub_resource type="BoxMesh" id="BoxMesh_p8f5p"]
+material = SubResource("ShaderMaterial_8en2e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lohn"]
+render_priority = 0
+shader = ExtResource("2_4riiy")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tfcyq"]
+material = SubResource("ShaderMaterial_2lohn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lo8a"]
+render_priority = 0
+shader = ExtResource("3_sr3bf")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dve4y"]
+material = SubResource("ShaderMaterial_1lo8a")
 
 [node name="Spider" type="CharacterBody3D"]
 script = ExtResource("1_uvtg6")
@@ -42,6 +61,22 @@ mesh = SubResource("BoxMesh_p8f5p")
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.225529, 0, 0, 0, 0.190532, 0, 0, 0, 0.256903, 0, 0, 0.552631)
 mesh = SubResource("BoxMesh_tfcyq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.151526, 0.159915, 0.467664)
+mesh = SubResource("SphereMesh_dve4y")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.120557, 0.159915, 0.467664)
+mesh = SubResource("SphereMesh_dve4y")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.361919, 0.283693, 0.467664)
+mesh = SubResource("SphereMesh_dve4y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.378534, 0.283693, 0.467664)
+mesh = SubResource("SphereMesh_dve4y")
 
 [node name="Legs" type="Node3D" parent="."]
 
@@ -84,9 +119,9 @@ step_target = NodePath("StepTarget")
 [node name="StepTarget" type="Marker3D" parent="Legs/Right/SpiderLeg5"]
 transform = Transform3D(0.87451, 0, -0.485008, 0, 1, 0, 0.485008, 0, 0.87451, 1.15224, -0.360534, -0.628292)
 
-[node name="SpiderLeg6" parent="Legs/Right" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
+[node name="ss" parent="Legs/Right" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(-0.934372, 0, -0.356298, 0, 1, 0, 0.356298, 0, -0.934372, -0.302489, 0, 0.339101)
 step_target = NodePath("StepTarget")
 
-[node name="StepTarget" type="Marker3D" parent="Legs/Right/SpiderLeg6"]
+[node name="StepTarget" type="Marker3D" parent="Legs/Right/ss"]
 transform = Transform3D(0.644311, 0, -0.764765, 0, 1, 0, 0.764765, 0, 0.644311, 1.55059, -0.360534, -0.865127)

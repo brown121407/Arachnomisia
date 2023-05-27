@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://b4a0sxx0m87jp"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_w5gmm"]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_6pdpt"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
+op_type = 5
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_phbub"]
+constant = Color(0.660312, 6.83127e-07, 0.326284, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_toora"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// ColorConstant:5
+	vec4 n_out5p0 = vec4(0.660312, 0.000001, 0.326284, 1.000000);
+
+
+// Fresnel:2
+	float n_in2p3 = 1.00000;
+	float n_out2p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in2p3);
+
+
+// Mix:3
+	vec4 n_in3p0 = vec4(0.00000, 0.00000, 0.00000, 0.00000);
+	vec4 n_out3p0 = mix(n_in3p0, n_out5p0, vec4(n_out2p0));
+
+
+// Mix:6
+	vec3 n_in6p0 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_out6p0 = mix(n_in6p0, vec3(n_out5p0.xyz), vec3(n_out2p0));
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	EMISSION = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-416.162, 61.667)
+nodes/fragment/2/node = SubResource("VisualShaderNodeFresnel_w5gmm")
+nodes/fragment/2/position = Vector2(-380, 360)
+nodes/fragment/3/node = SubResource("VisualShaderNodeMix_6pdpt")
+nodes/fragment/3/position = Vector2(100, 120)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_phbub")
+nodes/fragment/5/position = Vector2(-260, 100)
+nodes/fragment/6/node = SubResource("VisualShaderNodeMix_toora")
+nodes/fragment/6/position = Vector2(120, 380)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 0, 0, 0, 2, 0, 6, 2, 6, 0, 0, 5, 5, 0, 6, 1, 5, 0, 3, 1)
