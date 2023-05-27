@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://73xrkxb5eosb"]
+[gd_scene load_steps=8 format=3 uid="uid://73xrkxb5eosb"]
 
 [ext_resource type="PackedScene" uid="uid://bbi8b6ontra4f" path="res://scenes/spider_leg.tscn" id="1_bbjea"]
 [ext_resource type="Script" path="res://scripts/spider.gd" id="1_uvtg6"]
@@ -9,6 +9,10 @@ size = Vector3(0.577983, 0.280674, 0.811501)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pog7x"]
 size = Vector3(0.229071, 0.192179, 0.257717)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0a7i1"]
+radius = 0.448269
+height = 1.27942
+
 [sub_resource type="BoxMesh" id="BoxMesh_p8f5p"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_tfcyq"]
@@ -17,15 +21,18 @@ size = Vector3(0.229071, 0.192179, 0.257717)
 script = ExtResource("1_uvtg6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BodyCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_to3kd")
-disabled = true
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="HeadCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.553059)
 shape = SubResource("BoxShape3D_pog7x")
-disabled = true
+
+[node name="BodyExtraCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.122656)
+shape = SubResource("CapsuleShape3D_0a7i1")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.577983, 0, 0, 0, 0.280674, 0, 0, 0, 0.811501, 0, 0, 0)
@@ -39,22 +46,46 @@ mesh = SubResource("BoxMesh_tfcyq")
 
 [node name="Left" type="Node3D" parent="Legs"]
 
-[node name="SpiderLeg" parent="Legs/Left" instance=ExtResource("1_bbjea")]
+[node name="SpiderLeg" parent="Legs/Left" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(0.916216, 0, -0.400685, 0, 1, 0, 0.400685, 0, 0.916216, 0.293509, 0, 0.341168)
+step_target = NodePath("StepTarget")
 
-[node name="SpiderLeg2" parent="Legs/Left" instance=ExtResource("1_bbjea")]
+[node name="StepTarget" type="Marker3D" parent="Legs/Left/SpiderLeg"]
+transform = Transform3D(1, 0, 5.54239e-08, 0, 1, 0, -4.51007e-08, 0, 1, 1.76504, -0.360534, 0.832309)
+
+[node name="SpiderLeg2" parent="Legs/Left" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281144, 0, 0)
+step_target = NodePath("StepTarget")
 
-[node name="SpiderLeg3" parent="Legs/Left" instance=ExtResource("1_bbjea")]
+[node name="StepTarget" type="Marker3D" parent="Legs/Left/SpiderLeg2"]
+transform = Transform3D(1, 0, 5.54239e-08, 0, 1, 0, -4.51007e-08, 0, 1, 1.39207, -0.360534, 0.832309)
+
+[node name="SpiderLeg3" parent="Legs/Left" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(0.930712, 0, 0.365754, 0, 1, 0, -0.365754, 0, 0.930712, 0.292795, 0, -0.334968)
+step_target = NodePath("StepTarget")
+
+[node name="StepTarget" type="Marker3D" parent="Legs/Left/SpiderLeg3"]
+transform = Transform3D(1, 0, 6.30641e-08, 0, 1, 0, -2.03083e-08, 0, 1, 1.2452, -0.360534, 0.628021)
 
 [node name="Right" type="Node3D" parent="Legs"]
 
-[node name="SpiderLeg4" parent="Legs/Right" instance=ExtResource("1_bbjea")]
+[node name="SpiderLeg4" parent="Legs/Right" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(-0.87451, 0, 0.485008, 0, 1, 0, -0.485008, 0, -0.87451, -0.303204, 0, -0.337035)
+step_target = NodePath("StepTarget")
 
-[node name="SpiderLeg5" parent="Legs/Right" instance=ExtResource("1_bbjea")]
+[node name="StepTarget" type="Marker3D" parent="Legs/Right/SpiderLeg4"]
+transform = Transform3D(1, 0, -1.48308e-08, 0, 1, 0, -3.47549e-08, 0, 1, 0.99841, -0.360534, -0.549992)
+
+[node name="SpiderLeg5" parent="Legs/Right" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.290839, 0, 0.00413304)
+step_target = NodePath("StepTarget")
 
-[node name="SpiderLeg6" parent="Legs/Right" instance=ExtResource("1_bbjea")]
+[node name="StepTarget" type="Marker3D" parent="Legs/Right/SpiderLeg5"]
+transform = Transform3D(0.87451, 0, -0.485008, 0, 1, 0, 0.485008, 0, 0.87451, 1.15224, -0.360534, -0.628292)
+
+[node name="SpiderLeg6" parent="Legs/Right" node_paths=PackedStringArray("step_target") instance=ExtResource("1_bbjea")]
 transform = Transform3D(-0.934372, 0, -0.356298, 0, 1, 0, 0.356298, 0, -0.934372, -0.302489, 0, 0.339101)
+step_target = NodePath("StepTarget")
+
+[node name="StepTarget" type="Marker3D" parent="Legs/Right/SpiderLeg6"]
+transform = Transform3D(0.644311, 0, -0.764765, 0, 1, 0, 0.764765, 0, 0.644311, 1.55059, -0.360534, -0.865127)

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var movement_speed: float = 5.0
+@export var movement_speed: float = 2.5
 @export var movement_target: Node3D
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -13,11 +13,6 @@ func _ready():
 		for body in leg.get_leg_bodies():
 			add_collision_exception_with(body)	
 
-	# These values need to be adjusted for the actor's speed
-	# and the navigation layout.
-	navigation_agent.path_desired_distance = 0.5
-	navigation_agent.target_desired_distance = 0.5
-
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 
@@ -27,13 +22,16 @@ func actor_setup():
 
 	# Now that the navigation map is no longer empty, set the movement target.
 	if movement_target: 
-		navigation_agent.target_position = movement_target.position
+		navigation_agent.target_position = movement_target.global_position
 
 func _physics_process(_delta):
 	if movement_target:
-		navigation_agent.target_position = movement_target.position
-	
-	if navigation_agent.is_navigation_finished():
+		var dir := global_position - movement_target.global_position
+		look_at(global_position + dir)
+		navigation_agent.target_position = movement_target.global_position
+		
+	if navigation_agent.distance_to_target() < navigation_agent.target_desired_distance:
+		velocity = Vector3.ZERO
 		return
 
 	var current_agent_position: Vector3 = global_position
@@ -42,8 +40,7 @@ func _physics_process(_delta):
 	var new_velocity: Vector3 = next_path_position - current_agent_position
 	new_velocity = new_velocity.normalized()
 	new_velocity = new_velocity * movement_speed
-	
-	print(new_velocity)
 
 	velocity = new_velocity
 	move_and_slide()
+	
