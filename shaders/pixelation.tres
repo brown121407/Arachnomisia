@@ -36,6 +36,8 @@ source = 1
 
 [resource]
 code = "shader_type canvas_item;
+render_mode blend_mix;
+
 uniform float Pixelisation : hint_range(256, 512, 2) = 4;
 uniform sampler2D screen_tex_frg_7 : hint_screen_texture;
 

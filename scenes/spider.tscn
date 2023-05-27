@@ -16,12 +16,16 @@ size = Vector3(0.229071, 0.192179, 0.257717)
 [node name="Spider" type="CharacterBody3D"]
 script = ExtResource("1_uvtg6")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_to3kd")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.553059)
 shape = SubResource("BoxShape3D_pog7x")
+disabled = true
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.577983, 0, 0, 0, 0.280674, 0, 0, 0, 0.811501, 0, 0, 0)
