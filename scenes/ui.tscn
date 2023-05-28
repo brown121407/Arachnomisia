@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://csa64alh8kv0y"]
+[gd_scene load_steps=10 format=3 uid="uid://csa64alh8kv0y"]
 
 [ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="1_bfajk"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_15wpy"]
 [ext_resource type="Shader" uid="uid://b1dhbhg6xqy2v" path="res://shaders/pixelation.tres" id="2_sdkb8"]
 [ext_resource type="Texture2D" uid="uid://h075xb1bu3ns" path="res://icon.svg" id="3_u278k"]
+[ext_resource type="Texture2D" uid="uid://bj1d24uev7lqj" path="res://textures/reticle.png" id="5_8dgjt"]
+[ext_resource type="Shader" uid="uid://b4ydyrto73j3f" path="res://shaders/reticle.tres" id="5_v1bc6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfqnm"]
 shader = ExtResource("2_sdkb8")
@@ -11,6 +13,10 @@ shader_parameter/Pixelisation = 768.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xho5i"]
 bg_color = Color(0.270588, 0.372549, 0.207843, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbep3"]
+shader = ExtResource("5_v1bc6")
+shader_parameter/ColorParameter = Color(0.298039, 0.298039, 0.298039, 1)
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -94,3 +100,21 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.336364, 0.363113, 0.71943, 1)
 theme_override_font_sizes/font_size = 32
 text = "||||||||||||||||||||||||||||||"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qbep3")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8dgjt")
+expand_mode = 1
