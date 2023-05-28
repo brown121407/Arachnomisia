@@ -33,14 +33,15 @@ extends CharacterBody3D
 #@onready var aimcast := $Head/Camera3D/AimCast
 
 @onready var guns := [
-	$Head/ShootingHand/Shotgun
+	$Head/ShootingHand/Shotgun,
+	$Head/ShootingHand/Rifle
 ]
 
 var active_gun_index: int = 0 :
 	set(value):
 		active_gun.ammo_changed.disconnect(update_ammo)
 		active_gun.reloading.disconnect(update_reloading)
-		if value >= len(guns) - 1:
+		if value >= len(guns):
 			active_gun_index = 0
 		elif value < 0:
 			active_gun_index = len(guns) - 1

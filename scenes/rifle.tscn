@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ukmv1um2syjk"]
+
+[ext_resource type="PackedScene" uid="uid://b7j8ucu2rbex1" path="res://scenes/gun.tscn" id="1_a4t8w"]
+[ext_resource type="Script" path="res://scripts/rifle.gd" id="2_hs6kk"]
+[ext_resource type="Resource" uid="uid://bgfqn5m24r8ev" path="res://resources/rifle_stats.tres" id="3_fu2ya"]
+
+[node name="Rifle" instance=ExtResource("1_a4t8w")]
+script = ExtResource("2_hs6kk")
+stats = ExtResource("3_fu2ya")
+
+[node name="ShotTimer" parent="." index="0"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ReloadTimer" parent="." index="1"]
+wait_time = 0.05

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://csa64alh8kv0y"]
+[gd_scene load_steps=17 format=3 uid="uid://csa64alh8kv0y"]
 
 [ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="1_bfajk"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_15wpy"]
 [ext_resource type="Shader" uid="uid://b1dhbhg6xqy2v" path="res://shaders/pixelation.tres" id="2_sdkb8"]
 [ext_resource type="Texture2D" uid="uid://h075xb1bu3ns" path="res://icon.svg" id="3_u278k"]
 [ext_resource type="Texture2D" uid="uid://bj1d24uev7lqj" path="res://textures/reticle.png" id="5_8dgjt"]
+[ext_resource type="Shader" uid="uid://2pmboyb2l3h8" path="res://shaders/reload_warning.tres" id="5_q1ale"]
 [ext_resource type="Shader" uid="uid://b4ydyrto73j3f" path="res://shaders/reticle.tres" id="5_v1bc6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfqnm"]
@@ -13,6 +14,12 @@ shader_parameter/Pixelisation = 768.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xho5i"]
 bg_color = Color(0.270588, 0.372549, 0.207843, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5ryq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xsryi"]
+shader = ExtResource("5_q1ale")
+shader_parameter/FlashingSpeed = 10.0
 
 [sub_resource type="Gradient" id="Gradient_rxmy5"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
@@ -107,12 +114,24 @@ theme_override_font_sizes/font_size = 36
 text = "Ammo
 "
 
-[node name="AmmoCount" type="Label" parent="RightStatsContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="RightStatsContainer"]
+layout_mode = 2
+theme = ExtResource("1_bfajk")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g5ryq")
+
+[node name="AmmoCount" type="Label" parent="RightStatsContainer/PanelContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 45)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.336364, 0.363113, 0.71943, 1)
 theme_override_font_sizes/font_size = 32
 text = "||||||||||||||||||||||||||||||"
+
+[node name="ReloadWarning" type="Label" parent="RightStatsContainer/PanelContainer"]
+visible = false
+material = SubResource("ShaderMaterial_xsryi")
+layout_mode = 2
+text = "RELOAD"
+vertical_alignment = 1
 
 [node name="ReloadBar" type="TextureProgressBar" parent="RightStatsContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 10)
