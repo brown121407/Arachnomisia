@@ -40,7 +40,7 @@ material = SubResource("ShaderMaterial_1lo8a")
 script = ExtResource("1_uvtg6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-target_desired_distance = 2.0
+target_desired_distance = 1.25
 avoidance_enabled = true
 
 [node name="BodyCollisionShape" type="CollisionShape3D" parent="."]

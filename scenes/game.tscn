@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds2vdvt7ttkex"]
+[gd_scene load_steps=11 format=3 uid="uid://ds2vdvt7ttkex"]
 
 [ext_resource type="PackedScene" uid="uid://cfhcy35dvdmqt" path="res://scenes/world_environment.tscn" id="1_y007y"]
 [ext_resource type="MeshLibrary" uid="uid://cged7wuhys7i4" path="res://tileset.tres" id="2_pvkcb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/spawner_manager.gd" id="5_6pdgr"]
 [ext_resource type="PackedScene" uid="uid://csa64alh8kv0y" path="res://scenes/ui.tscn" id="5_dr8iq"]
 [ext_resource type="PackedScene" uid="uid://ivylvjkm1hbc" path="res://scenes/spawner.tscn" id="6_0hin8"]
+[ext_resource type="PackedScene" uid="uid://tojiyl1rajnf" path="res://scenes/small_spider.tscn" id="8_c6g7q"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_crywn"]
 
@@ -42,15 +43,30 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Spider" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_u047m")]
-player = NodePath("../Player")
-
 [node name="SpawnerManager" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_6pdgr")
 player = NodePath("../Player")
-spider_scene = ExtResource("3_u047m")
 
 [node name="Spawner" parent="SpawnerManager" instance=ExtResource("6_0hin8")]
+spider_scene = ExtResource("3_u047m")
+wait_time = 3.0
 
 [node name="Spawner2" parent="SpawnerManager" instance=ExtResource("6_0hin8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44708, 0.490552, 3.32601)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2193, 0.490552, 2.15723)
+spider_scene = ExtResource("3_u047m")
+wait_time = 3.0
+
+[node name="Spawner3" parent="SpawnerManager" instance=ExtResource("6_0hin8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5871, 0.490552, -20.3828)
+spider_scene = ExtResource("8_c6g7q")
+wait_time = 3.0
+
+[node name="Spawner4" parent="SpawnerManager" instance=ExtResource("6_0hin8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3852, 0.491899, -4.54457)
+spider_scene = ExtResource("3_u047m")
+wait_time = 3.0
+
+[node name="Spawner5" parent="SpawnerManager" instance=ExtResource("6_0hin8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6506, 0.491899, 13.0846)
+spider_scene = ExtResource("3_u047m")
+wait_time = 3.0

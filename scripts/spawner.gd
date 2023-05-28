@@ -2,6 +2,7 @@ class_name Spawner
 extends Marker3D
 
 
+@export var spider_scene: PackedScene
 @export var wait_time := 2.0
 @export var max_spawned := 5
 @export var spawned := 0 :
@@ -13,7 +14,7 @@ extends Marker3D
 func _ready():
 	timer.wait_time = wait_time
 	
-func spawn(spider_scene: PackedScene, player: Player):
+func spawn(player: Player):
 	if spawned >= max_spawned:
 		return
 	var spider := spider_scene.instantiate() as Spider
