@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://csa64alh8kv0y"]
+[gd_scene load_steps=18 format=3 uid="uid://csa64alh8kv0y"]
 
 [ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="1_bfajk"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_15wpy"]
@@ -37,7 +37,11 @@ gradient = SubResource("Gradient_gqwlx")
 shader = ExtResource("5_v1bc6")
 shader_parameter/ColorParameter = Color(0.298039, 0.298039, 0.298039, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brvdl"]
+bg_color = Color(0, 0.27451, 0.0901961, 0.419608)
+
 [node name="UI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,3 +162,64 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_8dgjt")
 expand_mode = 1
+
+[node name="PauseMenu" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -37.0
+offset_right = 173.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_brvdl")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="RichTextLabel" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "You HATE spiders.
+KILL THEM ALL."
+
+[node name="QuitButton" type="Button" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="KEYS" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="KeysExplained" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Movement: W, A, S, D
+Jump: SPACE
+Shoot: LMB
+Reload: R
+Weapon Change: Q, E
+Pause: ESC"

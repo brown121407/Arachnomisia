@@ -23,11 +23,11 @@ func actor_setup():
 	await get_tree().physics_frame
 
 	# Now that the navigation map is no longer empty, set the movement target.
-	if player: 
+	if is_instance_valid(player): 
 		navigation_agent.target_position = player.global_position
 
 func _physics_process(_delta):
-	if player:
+	if is_instance_valid(player):
 		var dir := global_position - player.global_position
 		dir.y = 0
 		look_at(global_position + dir)

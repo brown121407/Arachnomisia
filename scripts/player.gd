@@ -39,6 +39,7 @@ extends CharacterBody3D
 
 var active_gun_index: int = 0 :
 	set(value):
+		active_gun.stop_reload()
 		active_gun.ammo_changed.disconnect(update_ammo)
 		active_gun.reloading.disconnect(update_reloading)
 		if value >= len(guns):
@@ -63,6 +64,7 @@ var sprinting := false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	active_gun_index = 0
+	ui.pause()
 
 
 func _physics_process(delta):
@@ -109,7 +111,7 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event.is_action_pressed('shoot'):
+	if event.is_action_pressed('shoot') and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		active_gun.shoot()
 		
 #		var bullet = get_world_3d().direct_space_state
@@ -131,7 +133,7 @@ func _input(event):
 	elif event.is_action_pressed('previous_weapon'):
 		active_gun_index -= 1
 	elif event.is_action_pressed('ui_cancel'):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		ui.pause()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

@@ -53,5 +53,7 @@ func finish_reload():
 	ammo_changed.emit(stats.current_ammo)
 
 func stop_reload():
-	reload_progress = 0
 	reload_timer.stop()
+	reload_progress = 0
+	reloading.emit(reload_progress)
+
