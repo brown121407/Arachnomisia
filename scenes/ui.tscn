@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://csa64alh8kv0y"]
+
+[ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="1_bfajk"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="2_15wpy"]
+[ext_resource type="Shader" uid="uid://b1dhbhg6xqy2v" path="res://shaders/pixelation.tres" id="2_sdkb8"]
+[ext_resource type="Texture2D" uid="uid://h075xb1bu3ns" path="res://icon.svg" id="3_u278k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfqnm"]
+shader = ExtResource("2_sdkb8")
+shader_parameter/Pixelisation = 768.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xho5i"]
+bg_color = Color(0.270588, 0.372549, 0.207843, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bfajk")
+script = ExtResource("2_15wpy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xfqnm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u278k")
+
+[node name="LeftStatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -167.0
+offset_right = 360.0
+offset_bottom = -56.0
+grow_vertical = 0
+
+[node name="HealthLabel" type="Label" parent="LeftStatsContainer"]
+layout_mode = 2
+theme = ExtResource("1_bfajk")
+theme_override_font_sizes/font_size = 36
+text = "Health"
+
+[node name="HealthBar" type="ProgressBar" parent="LeftStatsContainer"]
+layout_mode = 2
+theme = ExtResource("1_bfajk")
+theme_override_font_sizes/font_size = 36
+value = 100.0
+
+[node name="StaminaLabel" type="Label" parent="LeftStatsContainer"]
+layout_mode = 2
+theme = ExtResource("1_bfajk")
+theme_override_font_sizes/font_size = 36
+text = "Stamina
+"
+
+[node name="StaminaBar" type="ProgressBar" parent="LeftStatsContainer"]
+layout_mode = 2
+theme = ExtResource("1_bfajk")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/fill = SubResource("StyleBoxFlat_xho5i")
+value = 100.0
+
+[node name="RightStatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -372.0
+offset_top = -167.0
+offset_right = -72.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="RightStatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Ammo
+"
+
+[node name="AmmoCount" type="Label" parent="RightStatsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.336364, 0.363113, 0.71943, 1)
+theme_override_font_sizes/font_size = 32
+text = "||||||||||||||||||||||||||||||"

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var movement_speed: float = 2.5
-@export var movement_target: Node3D
+@export var player: Player
 @export var leg_dist_threshold := 1.25
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -24,15 +24,15 @@ func actor_setup():
 	await get_tree().physics_frame
 
 	# Now that the navigation map is no longer empty, set the movement target.
-	if movement_target: 
-		navigation_agent.target_position = movement_target.global_position
+	if player: 
+		navigation_agent.target_position = player.global_position
 
 func _physics_process(_delta):
-	if movement_target:
-		var dir := global_position - movement_target.global_position
+	if player:
+		var dir := global_position - player.global_position
 		dir.y = 0
 		look_at(global_position + dir)
-		navigation_agent.target_position = movement_target.global_position
+		navigation_agent.target_position = player.global_position
 		
 	if navigation_agent.distance_to_target() < navigation_agent.target_desired_distance:
 		velocity = Vector3.ZERO

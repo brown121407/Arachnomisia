@@ -1,11 +1,27 @@
+class_name Player
 extends CharacterBody3D
 
+@export_group('UI')
+@export var ui: UI
 
+@export_group('Stats')
+@export_range(0, Constants.MAX_HEALTH) var health := Constants.MAX_HEALTH :
+	set(value):
+		health = clamp(value, 0, Constants.MAX_HEALTH)
+		ui.health = value
+@export_range(0, Constants.MAX_STAMINA) var stamina := Constants.MAX_STAMINA :
+	set(value):
+		stamina = clamp(value, 0, Constants.MAX_STAMINA)
+		ui.stamina = value
+@export var stamina_depletion_speed := 30.0
+@export var stamina_depletion_on_jump := 10.0
+@export var stamina_regen_speed := 10.0
+
+@export_group('Controls')
 @export var default_speed := 5.0
 @export var sprint_speed := 10.0
-@export var jump_velocity := 4.5
-@export var mouse_sensitivity = 0.05
-@export var damage := 100.0
+@export var jump_velocity := 5.25
+@export var mouse_sensitivity := 0.05
 
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
@@ -29,8 +45,12 @@ func _physics_process(delta):
 	sprinting = false
 
 	if Input.is_action_pressed('sprint'):
-		speed = sprint_speed
-		sprinting = true
+		if stamina > 0:
+			speed = sprint_speed
+			sprinting = true
+		stamina -= stamina_depletion_speed * delta
+	else: # not sprinting
+		stamina += stamina_regen_speed * delta
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -39,6 +59,7 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		stamina -= stamina_depletion_on_jump
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
