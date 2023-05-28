@@ -1,4 +1,7 @@
+class_name Spider
 extends CharacterBody3D
+
+signal die
 
 @export var movement_speed: float = 2.5
 @export var player: Player
@@ -7,14 +10,10 @@ extends CharacterBody3D
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
-	for leg in $Legs/Left.get_children():
+	for leg in $Legs/Left.get_children() + $Legs/Right.get_children():
 		leg.dist_threshold = leg_dist_threshold
 		for body in leg.get_leg_bodies():
-			add_collision_exception_with(body)	
-	for leg in $Legs/Right.get_children():
-		leg.dist_threshold = leg_dist_threshold		
-		for body in leg.get_leg_bodies():
-			add_collision_exception_with(body)	
+			add_collision_exception_with(body)
 
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")

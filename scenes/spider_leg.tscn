@@ -28,7 +28,7 @@ target_node = NodePath("../../../Target")
 script = ExtResource("2_rb6r4")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.979348, 0.202179, -3.53157e-09, -0.20218, 0.979348, -3.45743e-08, -3.53157e-09, 3.45743e-08, 1, 0, 0, 0)
+transform = Transform3D(0.979349, 0.202179, -3.53156e-09, -0.202179, 0.979348, -3.45742e-08, -3.53156e-09, 3.45742e-08, 1, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 
@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55528e-22, 0.419733, 2.982
 shape = SubResource("BoxShape3D_i5mkd")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.83233, 0.55428, -3.13343e-07, -0.55428, -0.83233, -9.47861e-08, -3.13343e-07, 9.47861e-08, 1, 0.920829, 0.341731, 1.57469e-07)
+transform = Transform3D(-0.83233, 0.55428, -3.13343e-07, -0.55428, -0.83233, -9.47862e-08, -3.13343e-07, 9.47861e-08, 1, 0.920829, 0.341731, 1.57469e-07)
 bone_name = "Bone.002"
 bone_idx = 2
 
