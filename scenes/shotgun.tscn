@@ -5,6 +5,7 @@
 
 [node name="Shotgun" instance=ExtResource("1_iggph")]
 stats = ExtResource("2_6l2ar")
+weapon_name = "Shotgun"
 
 [node name="ShotTimer" parent="." index="0"]
 wait_time = 0.2

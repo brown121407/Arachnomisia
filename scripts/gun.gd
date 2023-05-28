@@ -3,6 +3,7 @@ extends Node3D
 
 @export var stats: GunStats
 @export var ready_to_shoot := true
+@export var weapon_name: String
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var shot_timer: Timer = $ShotTimer
 

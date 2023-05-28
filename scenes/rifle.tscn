@@ -7,6 +7,7 @@
 [node name="Rifle" instance=ExtResource("1_a4t8w")]
 script = ExtResource("2_hs6kk")
 stats = ExtResource("3_fu2ya")
+weapon_name = "Rifle"
 
 [node name="ShotTimer" parent="." index="0"]
 wait_time = 0.1

@@ -51,6 +51,7 @@ var active_gun_index: int = 0 :
 		ui.ammo = active_gun.stats.current_ammo
 		active_gun.ammo_changed.connect(update_ammo)
 		active_gun.reloading.connect(update_reloading)
+		ui.weapon_label.text = active_gun.weapon_name
 var active_gun: Gun :
 	get:
 		return guns[active_gun_index]

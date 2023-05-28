@@ -11,6 +11,7 @@ extends Control
 @onready var pause_menu := $PauseMenu
 @onready var resume_button := $PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2/ResumeButton as Button
 @onready var quit_button := $PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2/QuitButton as Button
+@onready var weapon_label := $RightStatsContainer/WeaponLabel as Label
 
 @export_range(0, Constants.MAX_AMMO) var ammo := Constants.MAX_AMMO :
 	set(value):
