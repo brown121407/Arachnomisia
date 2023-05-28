@@ -22,17 +22,19 @@ extends CharacterBody3D
 @export var sprint_speed := 10.0
 @export var jump_velocity := 5.25
 @export var mouse_sensitivity := 0.05
+@export var camera_bob_factor := 0.01
 
 @onready var head := $Head
-@onready var camera := $Head/Camera3D
-# TODO: Handle head bobbing
-#@onready var animation_player := $Head/Camera3D/AnimationPlayer
+@onready var camera := $Head/Camera3D as Camera3D
+@onready var original_camera_position := camera.position
+
 #@onready var gun := $Head/Gun
 #@onready var muzzle := $Head/Gun/Muzzle
 #@onready var aimcast := $Head/Camera3D/AimCast
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") + 2
+var gravity = ProjectSettings.get_setting('physics/3d/default_gravity') + 2
 var sprinting := false
 
 
@@ -57,13 +59,13 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed('jump') and is_on_floor():
 		velocity.y = jump_velocity
 		stamina -= stamina_depletion_on_jump
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var input_dir := Input.get_vector('move_left', 'move_right', 'move_forward', 'move_backward')
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * speed
@@ -72,9 +74,12 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	if velocity != Vector3():
-		# animation_player.play("Sprint Head Bob" if sprinting else "Head Bob")
-		pass
+	var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+	if velocity != Vector3.ZERO and is_on_floor():
+		var camera_bob := Vector3.UP * camera_bob_factor * velocity.length() * sin(Time.get_ticks_msec() / 100)
+		tween.tween_property(camera, 'position', original_camera_position + camera_bob, 0.15)
+	else:
+		tween.tween_property(camera, 'position', original_camera_position, 0.15)
 
 	var collision := move_and_slide()
 	# TODO: Handle collision with spider
