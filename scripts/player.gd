@@ -8,11 +8,11 @@ extends CharacterBody3D
 @export_range(0, Constants.MAX_HEALTH) var health := Constants.MAX_HEALTH :
 	set(value):
 		health = clamp(value, 0, Constants.MAX_HEALTH)
-		ui.health = value
+		ui.health_bar.value = value
 @export_range(0, Constants.MAX_STAMINA) var stamina := Constants.MAX_STAMINA :
 	set(value):
 		stamina = clamp(value, 0, Constants.MAX_STAMINA)
-		ui.stamina = value
+		ui.stamina_bar.value = value
 @export var stamina_depletion_speed := 30.0
 @export var stamina_depletion_on_jump := 10.0
 @export var stamina_regen_speed := 10.0
@@ -32,6 +32,27 @@ extends CharacterBody3D
 #@onready var muzzle := $Head/Gun/Muzzle
 #@onready var aimcast := $Head/Camera3D/AimCast
 
+@onready var guns := [
+	$Head/ShootingHand/Shotgun
+]
+
+var active_gun_index: int = 0 :
+	set(value):
+		active_gun.ammo_changed.disconnect(update_ammo)
+		active_gun.reloading.disconnect(update_reloading)
+		if value >= len(guns) - 1:
+			active_gun_index = 0
+		elif value < 0:
+			active_gun_index = len(guns) - 1
+		else:
+			active_gun_index = value
+		ui.ammo = active_gun.stats.current_ammo
+		active_gun.ammo_changed.connect(update_ammo)
+		active_gun.reloading.connect(update_reloading)
+var active_gun: Gun :
+	get:
+		return guns[active_gun_index]
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity') + 2
@@ -40,6 +61,7 @@ var sprinting := false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	active_gun_index = 0
 
 
 func _physics_process(delta):
@@ -87,20 +109,27 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed('shoot'):
-		var bullet = get_world_3d().direct_space_state
-		var ray_query_params = PhysicsRayQueryParameters3D.new()
-		# ray_query_params.from = muzzle.transform.origin
-		# ray_query_params.to = aimcast.get_collision_point()
-		var collision = bullet.intersect_ray(ray_query_params)
+		active_gun.shoot()
+		
+#		var bullet = get_world_3d().direct_space_state
+#		var ray_query_params = PhysicsRayQueryParameters3D.new()
+#		# ray_query_params.from = muzzle.transform.origin
+#		# ray_query_params.to = aimcast.get_collision_point()
+#		var collision = bullet.intersect_ray(ray_query_params)
+#
+#		if collision:
+#			var target = collision.collider
+#			if target.is_in_group('Enemy'):
+#				print('hit enemy')
+#				# (target as Enemy).take_damage(damage)
 
-		if collision:
-			var target = collision.collider
-			if target.is_in_group('Enemy'):
-				print('hit enemy')
-				# (target as Enemy).take_damage(damage)
-
-
-	if event.is_action_pressed('ui_cancel'):
+	elif event.is_action_pressed('reload'):
+		active_gun.reload()
+	elif event.is_action_pressed('next_weapon'):
+		active_gun_index += 1
+	elif event.is_action_pressed('previous_weapon'):
+		active_gun_index -= 1
+	elif event.is_action_pressed('ui_cancel'):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -108,3 +137,10 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+
+
+func update_ammo(ammo: int):
+	ui.ammo = ammo
+
+func update_reloading(progress: int):
+	ui.reload_bar.value = progress

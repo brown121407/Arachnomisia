@@ -17,6 +17,8 @@ agent_radius = 1.25
 
 [node name="Game" type="Node3D"]
 
+[node name="UI" parent="." instance=ExtResource("5_dr8iq")]
+
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_y007y")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("4_nv6a8")]
@@ -52,5 +54,3 @@ spider_scene = ExtResource("3_u047m")
 
 [node name="Spawner2" parent="SpawnerManager" instance=ExtResource("6_0hin8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44708, 0.490552, 3.32601)
-
-[node name="UI" parent="." instance=ExtResource("5_dr8iq")]

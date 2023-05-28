@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csa64alh8kv0y"]
+[gd_scene load_steps=14 format=3 uid="uid://csa64alh8kv0y"]
 
 [ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="1_bfajk"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_15wpy"]
@@ -13,6 +13,18 @@ shader_parameter/Pixelisation = 768.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xho5i"]
 bg_color = Color(0.270588, 0.372549, 0.207843, 1)
+
+[sub_resource type="Gradient" id="Gradient_rxmy5"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qorgn"]
+gradient = SubResource("Gradient_rxmy5")
+
+[sub_resource type="Gradient" id="Gradient_gqwlx"]
+colors = PackedColorArray(0.474409, 0.000457209, 0.549796, 1, 1, 0.572549, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vvubw"]
+gradient = SubResource("Gradient_gqwlx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbep3"]
 shader = ExtResource("5_v1bc6")
@@ -96,10 +108,19 @@ text = "Ammo
 "
 
 [node name="AmmoCount" type="Label" parent="RightStatsContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 45)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.336364, 0.363113, 0.71943, 1)
 theme_override_font_sizes/font_size = 32
 text = "||||||||||||||||||||||||||||||"
+
+[node name="ReloadBar" type="TextureProgressBar" parent="RightStatsContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 10)
+layout_mode = 2
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_qorgn")
+texture_progress = SubResource("GradientTexture1D_vvubw")
+texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 texture_filter = 1

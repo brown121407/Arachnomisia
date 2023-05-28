@@ -16,7 +16,7 @@ func get_leg_bodies() -> Array:
 			bodies.push_back(child.get_child(0))
 	return bodies
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var dist: float = step_target.global_position.distance_to(target.global_position)
 	if dist > dist_threshold:
 		var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)

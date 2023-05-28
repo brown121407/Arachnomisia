@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GunStats" load_steps=2 format=3 uid="uid://bgfqn5m24r8ev"]
+
+[ext_resource type="Script" path="res://scripts/gun_stats.gd" id="1_4bvc6"]
+
+[resource]
+script = ExtResource("1_4bvc6")
+bullet_damage = 1.0
+max_ammo = 30
+current_ammo = 0
+reload_time = 1.0
