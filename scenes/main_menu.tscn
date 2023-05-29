@@ -16,6 +16,7 @@ shader_parameter/Pixelisation = 768.0
 font_size = 48
 
 [node name="Menu" type="Node3D"]
+process_mode = 3
 
 [node name="Background" type="Node3D" parent="."]
 
