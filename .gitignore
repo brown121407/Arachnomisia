@@ -16,3 +16,5 @@ mono_crash.*.json
 
 # Blender backups
 *.blend1
+
+.DS_Store
