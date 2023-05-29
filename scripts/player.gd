@@ -38,6 +38,8 @@ extends CharacterBody3D
 
 var active_gun_index: int = 0 :
 	set(value):
+		if active_gun.shooting:
+			return
 		active_gun.stop_reload()
 		active_gun.ammo_changed.disconnect(update_ammo)
 		active_gun.reloading.disconnect(update_reloading)

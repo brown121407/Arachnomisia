@@ -19,7 +19,7 @@ func spawn(player: Player):
 		return
 	var spider := spider_scene.instantiate() as Spider
 	spider.player = player
-	get_tree().get_root().add_child(spider)
+	add_child(spider)
 	spider.global_position = global_position	
 	
 	spider.die.connect(func (): spawned -= 1)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhk4b7jdgp5ot"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_btonn"]
+[ext_resource type="ArrayMesh" uid="uid://d025o437eiub0" path="res://guns/ammo_pistol.obj" id="2_p7xjs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmums"]
+size = Vector3(0.034965, 0.118369, 0.0452935)
+
+[node name="Bullet" type="Area3D"]
+transform = Transform3D(10, -3.48787e-15, 3.48787e-15, 3.48787e-15, 10, -3.48787e-15, -3.48787e-15, 3.48787e-15, 10, 0, 0, 0)
+script = ExtResource("1_btonn")
+muzzle_velocity = 40
+g = Vector3(2.08165e-12, -5, 2.08165e-12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 1.21761e-21, 6.97574e-15, -6.97574e-15, 1.31134e-06, 10, -1.32252e-21, -10, 1.31134e-06, 0, 0, 0)
+mesh = ExtResource("2_p7xjs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00193, 1.29968e-22, 6.98923e-16, -6.98923e-16, 1.31388e-07, 1.00193, -1.05013e-23, -1.00193, 1.31388e-07, 0, 0, 0)
+shape = SubResource("BoxShape3D_rmums")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

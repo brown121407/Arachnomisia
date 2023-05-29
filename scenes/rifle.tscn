@@ -1,22 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ukmv1um2syjk"]
+[gd_scene load_steps=6 format=3 uid="uid://ukmv1um2syjk"]
 
 [ext_resource type="PackedScene" uid="uid://b7j8ucu2rbex1" path="res://scenes/gun.tscn" id="1_a4t8w"]
 [ext_resource type="Script" path="res://scripts/rifle.gd" id="2_hs6kk"]
 [ext_resource type="Resource" uid="uid://bgfqn5m24r8ev" path="res://resources/rifle_stats.tres" id="3_fu2ya"]
+[ext_resource type="PackedScene" uid="uid://bhk4b7jdgp5ot" path="res://scenes/bullet.tscn" id="4_eh4uy"]
 [ext_resource type="ArrayMesh" uid="uid://bvkm7tfv0jmrd" path="res://guns/machinegun.obj" id="6_ubd5g"]
 
 [node name="Rifle" instance=ExtResource("1_a4t8w")]
 script = ExtResource("2_hs6kk")
 stats = ExtResource("3_fu2ya")
 weapon_name = "Rifle"
+bullet_scene = ExtResource("4_eh4uy")
 
 [node name="ShotTimer" parent="." index="0"]
 wait_time = 0.1
 one_shot = true
 
-[node name="RifleMesh" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(-7, 2.44151e-15, -6.11959e-07, 2.44151e-15, 7, -2.44151e-15, 6.11959e-07, -2.44151e-15, -7, 0, 0, 0)
-mesh = ExtResource("6_ubd5g")
-
-[node name="Muzzle" parent="." index="3"]
+[node name="Muzzle" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0437244, -0.346037)
+
+[node name="GunMesh" parent="." index="3"]
+transform = Transform3D(-7, 0, -1.05697e-06, 0, 7, 0, 1.05697e-06, 0, -7, 0, 0, 0)
+mesh = ExtResource("6_ubd5g")

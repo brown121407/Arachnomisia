@@ -6,6 +6,12 @@ signal die
 @export var movement_speed: float = 2.5
 @export var player: Player
 @export var leg_dist_threshold := 1.25
+@export var health := 100 :
+	set(value):
+		health = value
+		if health < 0:
+			die.emit()
+			queue_free()
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 

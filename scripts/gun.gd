@@ -7,10 +7,12 @@ extends Node3D
 @onready var fire_particles: GPUParticles3D = $Muzzle/SmokeParticles
 @onready var muzzle_flash: OmniLight3D = $Muzzle/MuzzleFlash
 @onready var light_timer: Timer = $Muzzle/LightTimer
+@onready var gun_mesh: MeshInstance3D = $GunMesh
 
 var ready_to_shoot: bool :
 	get:
 		return shot_timer.is_stopped()
+var shooting := false
 @export var stats: GunStats
 @export var weapon_name: String
 @export var bullet_scene: PackedScene
@@ -30,11 +32,11 @@ func _ready():
 	stats.current_ammo = stats.max_ammo
 	reload_timer.timeout.connect(track_reload)
 	light_timer.timeout.connect(func (): muzzle_flash.visible = false)
-	
 
-func shoot():
+
+func shoot() -> bool:
 	if not ready_to_shoot or stats.current_ammo <= 0 or is_reloading:
-		return
+		return false
 
 	stats.current_ammo -= 1
 	ammo_changed.emit(stats.current_ammo)
@@ -42,12 +44,14 @@ func shoot():
 	fire_particles.emitting = true
 	muzzle_flash.visible = true
 	light_timer.start()
-	var recoil_tween: Tween = get_tree().create_tween().bind_node(self)
-	recoil_tween.tween_property(self, 'rotation', Vector3(0.35, 0, 0), 0.02)
-	recoil_tween.tween_property(self, 'rotation', Vector3(0, 0, 0), 0.2)
+	var recoil_tween: Tween = get_tree().create_tween().bind_node(gun_mesh)
+	recoil_tween.tween_property(gun_mesh, 'rotation', Vector3(-0.35, gun_mesh.rotation.y, 0), 0.05)
+	recoil_tween.tween_property(gun_mesh, 'rotation', Vector3(0, gun_mesh.rotation.y, 0), 0.15)
 	
 	ready_to_shoot = false
 	shot_timer.start()
+	
+	return true
 
 
 func reload():
