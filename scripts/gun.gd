@@ -13,6 +13,7 @@ var ready_to_shoot: bool :
 		return shot_timer.is_stopped()
 @export var stats: GunStats
 @export var weapon_name: String
+@export var bullet_scene: PackedScene
 
 signal ammo_changed(current: int)
 signal reloading(progress: int)

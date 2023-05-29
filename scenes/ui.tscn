@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csa64alh8kv0y"]
+[gd_scene load_steps=19 format=3 uid="uid://csa64alh8kv0y"]
 
 [ext_resource type="Theme" uid="uid://b813frhgu7qyi" path="res://ui/theme.tres" id="1_bfajk"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="2_15wpy"]
@@ -39,6 +39,9 @@ shader_parameter/ColorParameter = Color(0.298039, 0.298039, 0.298039, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brvdl"]
 bg_color = Color(0, 0.27451, 0.0901961, 0.419608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvewl"]
+bg_color = Color(0, 0.270588, 0.0745098, 0.733333)
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -168,6 +171,7 @@ texture = ExtResource("5_8dgjt")
 expand_mode = 1
 
 [node name="PauseMenu" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -201,19 +205,19 @@ layout_mode = 2
 
 [node name="ResumeButton" type="Button" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
-text = "RESUME"
+text = "HATE"
 
 [node name="Label" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
-text = "You HATE spiders."
+text = "Do you HATE spiders?"
 
 [node name="Label2" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
-text = "KILL THEM ALL."
+text = "Will you KILL THEM ALL?"
 
 [node name="QuitButton" type="Button" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
-text = "QUIT"
+text = "LOVE"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -230,3 +234,38 @@ Shoot: LMB
 Reload: R
 Weapon Change: Q, E
 Pause: ESC"
+
+[node name="EndMenu" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.5
+offset_top = -95.0
+offset_right = 194.5
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pvewl")
+
+[node name="MarginContainer" type="MarginContainer" parent="EndMenu"]
+layout_mode = 2
+
+[node name="VBoxCOntainer" type="VBoxContainer" parent="EndMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndMenu/MarginContainer/VBoxCOntainer"]
+layout_mode = 2
+text = "The spiders LOVE you more 
+than you HATE them."
+
+[node name="RestartButton" type="Button" parent="EndMenu/MarginContainer/VBoxCOntainer"]
+layout_mode = 2
+text = "HATE MORE"
+
+[node name="EndQuitButton" type="Button" parent="EndMenu/MarginContainer/VBoxCOntainer"]
+layout_mode = 2
+text = "ACCEPT LOVE"

@@ -19,9 +19,6 @@ weapon_name = "Shotgun"
 wait_time = 0.2
 one_shot = true
 
-[node name="ReloadTimer" parent="." index="1"]
-wait_time = 0.05
-
 [node name="ShotgunMesh" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(-15, 5.2318e-15, -1.31134e-06, 5.2318e-15, 15, -5.2318e-15, 1.31134e-06, -5.2318e-15, -15, 0, 0, 0)
 mesh = ExtResource("5_xf2ku")

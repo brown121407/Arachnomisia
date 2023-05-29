@@ -9,6 +9,8 @@ extends CharacterBody3D
 	set(value):
 		health = clamp(value, 0, Constants.MAX_HEALTH)
 		ui.health_bar.value = value
+		if health == 0:
+			ui.end_game()
 @export_range(0, Constants.MAX_STAMINA) var stamina := Constants.MAX_STAMINA :
 	set(value):
 		stamina = clamp(value, 0, Constants.MAX_STAMINA)
@@ -28,9 +30,6 @@ extends CharacterBody3D
 @onready var camera := $Head/Camera3D as Camera3D
 @onready var original_camera_position := camera.position
 
-#@onready var gun := $Head/Gun
-#@onready var muzzle := $Head/Gun/Muzzle
-#@onready var aimcast := $Head/Camera3D/AimCast
 
 @onready var guns := [
 	$Head/ShootingHand/Shotgun,
@@ -112,11 +111,10 @@ func _physics_process(delta):
 		tween.tween_property(camera, 'position', original_camera_position, 0.15)
 
 	var collided := move_and_slide()
-	if collided:
-		var collision := get_last_slide_collision()
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
 		var collided_node := collision.get_collider() as Node3D
 		if collided_node.is_in_group('Enemy'):
-			
 			health -= 10 * delta
 
 
@@ -129,8 +127,6 @@ func _input(event):
 		active_gun_index += 1
 	elif event.is_action_pressed('previous_weapon'):
 		active_gun_index -= 1
-	elif event.is_action_pressed('ui_cancel'):
-		ui.pause()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

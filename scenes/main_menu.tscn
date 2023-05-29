@@ -110,7 +110,7 @@ layout_mode = 2
 [node name="Play" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Play"
+text = "I HATE SPIDERS"
 
 [node name="Settings" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer"]
 visible = false
@@ -121,7 +121,7 @@ text = "Settings"
 [node name="Exit" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Exit"
+text = "I LOVE SPIDERS"
 
 [node name="SettingsMenu" type="PanelContainer" parent="UI/VBoxContainer"]
 visible = false

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmgsf58xph2go"]
+
+[ext_resource type="ArrayMesh" uid="uid://47xcvj454jp" path="res://guns/ammo_uzi.obj" id="1_3qsr7"]
+
+[node name="ShotgunBullet" type="MeshInstance3D"]
+mesh = ExtResource("1_3qsr7")

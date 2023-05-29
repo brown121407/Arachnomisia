@@ -24,6 +24,7 @@ script = ExtResource("1_qpqbt")
 [node name="ShotTimer" type="Timer" parent="."]
 
 [node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.05
 
 [node name="Muzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.921516)
