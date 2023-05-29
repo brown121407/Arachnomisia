@@ -107,26 +107,18 @@ func _physics_process(delta):
 	else:
 		tween.tween_property(camera, 'position', original_camera_position, 0.15)
 
-	var collision := move_and_slide()
-	# TODO: Handle collision with spider
+	var collided := move_and_slide()
+	if collided:
+		var collision := get_last_slide_collision()
+		var collided_node := collision.get_collider() as Node3D
+		if collided_node.is_in_group('Enemy'):
+			
+			health -= 10 * delta
 
 
 func _input(event):
 	if event.is_action_pressed('shoot') and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		active_gun.shoot()
-		
-#		var bullet = get_world_3d().direct_space_state
-#		var ray_query_params = PhysicsRayQueryParameters3D.new()
-#		# ray_query_params.from = muzzle.transform.origin
-#		# ray_query_params.to = aimcast.get_collision_point()
-#		var collision = bullet.intersect_ray(ray_query_params)
-#
-#		if collision:
-#			var target = collision.collider
-#			if target.is_in_group('Enemy'):
-#				print('hit enemy')
-#				# (target as Enemy).take_damage(damage)
-
 	elif event.is_action_pressed('reload'):
 		active_gun.reload()
 	elif event.is_action_pressed('next_weapon'):

@@ -28,36 +28,36 @@ target_node = NodePath("../../../Target")
 script = ExtResource("2_rb6r4")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 1, 7.10543e-15, -1, 0, -1.19209e-07, -1.19209e-07, -7.10543e-15, 1, 0, 0, 0)
+transform = Transform3D(0.979348, 0.202179, -3.53157e-09, -0.20218, 0.979348, -3.45743e-08, -3.53157e-09, 3.45743e-08, 1, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55528e-22, 0.419733, 2.98238e-15)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D/CharacterBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D/CharacterBody3D" index="0" groups=["Enemy"]]
 shape = SubResource("BoxShape3D_i5mkd")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-7.54979e-08, 1, 3.80531e-15, -1, -7.54979e-08, -4.37114e-08, -4.37114e-08, -7.10543e-15, 1, 0.875979, 0, -6.2242e-15)
+transform = Transform3D(-0.570159, 0.821534, -2.68509e-07, -0.821534, -0.570159, -1.40489e-07, -2.68509e-07, 1.40489e-07, 1, 0.177105, 0.857888, 3.02863e-08)
 bone_name = "Bone.001"
 bone_idx = 1
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment3D2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55528e-22, 0.419733, 2.98238e-15)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D2/CharacterBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D2/CharacterBody3D" index="0" groups=["Enemy"]]
 shape = SubResource("BoxShape3D_i5mkd")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-7.54979e-08, 1, 3.08055e-14, -1, -7.54979e-08, 3.13916e-07, 3.13916e-07, -7.10543e-15, 1, 1.78127, -6.83472e-08, -1.26567e-14)
+transform = Transform3D(-0.83233, 0.55428, -3.13343e-07, -0.55428, -0.83233, -9.47861e-08, -3.13343e-07, 9.47861e-08, 1, 0.920829, 0.341731, 1.57469e-07)
 bone_name = "Bone.002"
 bone_idx = 2
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Armature/Skeleton3D/BoneAttachment3D3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55528e-22, 0.419733, 2.98238e-15)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D3/CharacterBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D3/CharacterBody3D" index="0" groups=["Enemy"]]
 shape = SubResource("BoxShape3D_i5mkd")
 
 [node name="Target" type="Marker3D" parent="." index="1"]

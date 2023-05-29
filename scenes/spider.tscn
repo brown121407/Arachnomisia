@@ -36,21 +36,21 @@ shader = ExtResource("3_sr3bf")
 [sub_resource type="SphereMesh" id="SphereMesh_dve4y"]
 material = SubResource("ShaderMaterial_1lo8a")
 
-[node name="Spider" type="CharacterBody3D"]
+[node name="Spider" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_uvtg6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 1.25
 avoidance_enabled = true
 
-[node name="BodyCollisionShape" type="CollisionShape3D" parent="."]
+[node name="BodyCollisionShape" type="CollisionShape3D" parent="." groups=["Enemy"]]
 shape = SubResource("BoxShape3D_to3kd")
 
-[node name="HeadCollisionShape" type="CollisionShape3D" parent="."]
+[node name="HeadCollisionShape" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.553059)
 shape = SubResource("BoxShape3D_pog7x")
 
-[node name="BodyExtraCollisionShape" type="CollisionShape3D" parent="."]
+[node name="BodyExtraCollisionShape" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.122656)
 shape = SubResource("CapsuleShape3D_0a7i1")
 

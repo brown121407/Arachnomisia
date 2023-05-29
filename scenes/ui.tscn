@@ -203,10 +203,13 @@ layout_mode = 2
 layout_mode = 2
 text = "RESUME"
 
-[node name="RichTextLabel" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
-text = "You HATE spiders.
-KILL THEM ALL."
+text = "You HATE spiders."
+
+[node name="Label2" type="Label" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+text = "KILL THEM ALL."
 
 [node name="QuitButton" type="Button" parent="PauseMenu/MarginContainer/HBoxContainer/CenterContainer/VBoxContainer2"]
 layout_mode = 2
