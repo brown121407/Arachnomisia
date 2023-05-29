@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7j8ucu2rbex1"]
+[gd_scene load_steps=5 format=3 uid="uid://b7j8ucu2rbex1"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_qpqbt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fipsi"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 100.0
+gravity = Vector3(2.08165e-12, -1, 2.08165e-12)
+color = Color(0.894118, 0.403922, 0.243137, 0.372549)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbkfh"]
+transparency = 1
+albedo_color = Color(0.458824, 0.380392, 0.482353, 0.313726)
+
+[sub_resource type="SphereMesh" id="SphereMesh_60f6v"]
+material = SubResource("StandardMaterial3D_tbkfh")
+radius = 0.05
+height = 0.1
 
 [node name="Gun" type="Node3D"]
 script = ExtResource("1_qpqbt")
@@ -8,3 +24,22 @@ script = ExtResource("1_qpqbt")
 [node name="ShotTimer" type="Timer" parent="."]
 
 [node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.921516)
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="Muzzle"]
+emitting = false
+amount = 40
+lifetime = 0.15
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_fipsi")
+draw_pass_1 = SubResource("SphereMesh_60f6v")
+
+[node name="MuzzleFlash" type="OmniLight3D" parent="Muzzle"]
+visible = false
+light_color = Color(0.968627, 0.568627, 0, 1)
+
+[node name="LightTimer" type="Timer" parent="Muzzle"]
+wait_time = 0.05
+one_shot = true
