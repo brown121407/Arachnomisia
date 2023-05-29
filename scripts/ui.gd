@@ -14,6 +14,7 @@ extends Control
 @onready var end_menu := $EndMenu
 @onready var end_quit_button := $EndMenu/MarginContainer/VBoxCOntainer/EndQuitButton as Button
 @onready var restart_button := $EndMenu/MarginContainer/VBoxCOntainer/RestartButton as Button
+@onready var kill_counter := $KillCounter
 
 @export_range(0, Constants.MAX_AMMO) var ammo := Constants.MAX_AMMO :
 	set(value):

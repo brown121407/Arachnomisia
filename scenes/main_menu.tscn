@@ -117,7 +117,7 @@ text = "I HATE SPIDERS"
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Settings"
+text = "SETTINGS"
 
 [node name="Exit" type="Button" parent="UI/VBoxContainer/MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2

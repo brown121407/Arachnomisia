@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://73xrkxb5eosb"]
+[gd_scene load_steps=15 format=3 uid="uid://73xrkxb5eosb"]
 
 [ext_resource type="PackedScene" uid="uid://bbi8b6ontra4f" path="res://scenes/spider_leg.tscn" id="1_bbjea"]
 [ext_resource type="Script" path="res://scripts/spider.gd" id="1_uvtg6"]
 [ext_resource type="Shader" uid="uid://v5sypqgj8kyy" path="res://shaders/spider_leg.tres" id="2_4riiy"]
+[ext_resource type="PackedScene" uid="uid://7m11ojak4n0h" path="res://scenes/spider_death_effect.tscn" id="2_ipyt7"]
 [ext_resource type="Shader" uid="uid://b4a0sxx0m87jp" path="res://shaders/spider_eye.tres" id="3_sr3bf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_to3kd"]
@@ -38,6 +39,7 @@ material = SubResource("ShaderMaterial_1lo8a")
 
 [node name="Spider" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_uvtg6")
+death_effect_scene = ExtResource("2_ipyt7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 1.25

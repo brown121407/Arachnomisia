@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dur4sd4a6vsuk"
+path="res://.godot/imported/Abstraction - Three Red Hearts - Pixel War 1.wav-94a6830db9b69bfcb9e8b35419f91b3f.sample"
+
+[deps]
+
+source_file="res://sounds/Abstraction - Three Red Hearts - Pixel War 1.wav"
+dest_files=["res://.godot/imported/Abstraction - Three Red Hearts - Pixel War 1.wav-94a6830db9b69bfcb9e8b35419f91b3f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

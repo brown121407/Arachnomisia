@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dacu1b73rqxyt"
+path="res://.godot/imported/762x39 Burst Isolated MP3.mp3-e4bce00298582709c2b71749c5316b45.mp3str"
+
+[deps]
+
+source_file="res://sounds/762x39 Burst Isolated MP3.mp3"
+dest_files=["res://.godot/imported/762x39 Burst Isolated MP3.mp3-e4bce00298582709c2b71749c5316b45.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

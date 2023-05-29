@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://5l6ujxp6mrcn"]
+
+[ext_resource type="Script" path="res://scripts/global.gd" id="1_5d1cb"]
+[ext_resource type="AudioStream" uid="uid://dur4sd4a6vsuk" path="res://sounds/Abstraction - Three Red Hearts - Pixel War 1.wav" id="1_ymq5u"]
+
+[node name="Global" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_5d1cb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ymq5u")
+autoplay = true

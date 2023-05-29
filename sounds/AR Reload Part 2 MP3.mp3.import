@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds6mlvjq64gts"
+path="res://.godot/imported/AR Reload Part 2 MP3.mp3-8cababe871a57c3e416074bc27f4c572.mp3str"
+
+[deps]
+
+source_file="res://sounds/AR Reload Part 2 MP3.mp3"
+dest_files=["res://.godot/imported/AR Reload Part 2 MP3.mp3-8cababe871a57c3e416074bc27f4c572.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

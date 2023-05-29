@@ -68,6 +68,7 @@ var sprinting := false
 
 
 func _ready():
+	get_node('/root/Global').score = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	active_gun_index = 0
 	ui.pause()

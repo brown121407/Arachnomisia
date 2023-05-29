@@ -33,5 +33,7 @@ func spawn(player: Player):
 	spider.die.connect(func (): 
 		spawned -= 1
 		killed += 1
+		get_node('/root/Global').score += 1
+		get_node('/root/Game/UI').kill_counter.text = 'KILLED SPIDERS: ' + str(get_node('/root/Global').score)
 	)
 	spawned += 1

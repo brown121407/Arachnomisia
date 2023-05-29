@@ -3,17 +3,24 @@ extends CharacterBody3D
 
 signal die
 
+@export var death_effect_scene: PackedScene
 @export var movement_speed: float = 2.5
 @export var player: Player
 @export var leg_dist_threshold := 1.25
 @export var health := 100 :
 	set(value):
 		health = value
-		if health < 0:
+		if health < 0 and not dead:
+			dead = true
 			die.emit()
+			var death_effect := death_effect_scene.instantiate()
+			get_tree().root.add_child(death_effect)
+			death_effect.global_position = global_position
 			queue_free()
+var dead := false
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+
 
 func _ready():
 	for leg in $Legs/Left.get_children() + $Legs/Right.get_children():

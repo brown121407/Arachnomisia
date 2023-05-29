@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://7m11ojak4n0h"]
+
+[ext_resource type="Script" path="res://scripts/spider_death_effect.gd" id="1_bcrae"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61cw7"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 27.24
+flatness = 0.09
+gravity = Vector3(2.08165e-12, -15, 2.08165e-12)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ueh8"]
+transparency = 1
+albedo_color = Color(0.831373, 0.0313726, 0.4, 0.466667)
+emission = Color(0.917647, 0.305882, 0.321569, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_8tl7y"]
+material = SubResource("StandardMaterial3D_4ueh8")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_61cw7")
+draw_pass_1 = SubResource("BoxMesh_8tl7y")
+script = ExtResource("1_bcrae")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1

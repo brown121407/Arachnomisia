@@ -269,3 +269,15 @@ text = "HATE MORE"
 [node name="EndQuitButton" type="Button" parent="EndMenu/MarginContainer/VBoxCOntainer"]
 layout_mode = 2
 text = "ACCEPT LOVE"
+
+[node name="KillCounter" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -373.0
+offset_top = 24.0
+offset_right = -28.0
+offset_bottom = 55.0
+grow_horizontal = 0
+text = "KILLED SPIDERS: 0"

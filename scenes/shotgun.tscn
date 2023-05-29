@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://scb3sed7eju6"]
+[gd_scene load_steps=9 format=3 uid="uid://scb3sed7eju6"]
 
 [ext_resource type="PackedScene" uid="uid://b7j8ucu2rbex1" path="res://scenes/gun.tscn" id="1_iggph"]
 [ext_resource type="Resource" uid="uid://kjlefy6h1y3" path="res://resources/shotgun_stats.tres" id="2_6l2ar"]
 [ext_resource type="Script" path="res://scripts/shotgun.gd" id="2_g6p2s"]
 [ext_resource type="PackedScene" uid="uid://01qyxn5qoa36" path="res://scenes/shotgun_shell.tscn" id="4_au7kx"]
 [ext_resource type="ArrayMesh" uid="uid://dy8damm4iixl3" path="res://guns/shotgun.obj" id="5_xf2ku"]
+[ext_resource type="AudioStream" uid="uid://b4hvva0roxdp3" path="res://sounds/Pump Reload Full Fast MP3.mp3" id="6_u5pcr"]
+[ext_resource type="AudioStream" uid="uid://b5flpxy6dqjgg" path="res://sounds/762x54r Single MP3.mp3" id="7_x0lah"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_86aa3"]
 emission_shape = 1
@@ -37,3 +39,9 @@ wait_time = 0.1
 [node name="GunMesh" parent="." index="3"]
 transform = Transform3D(-15, 5.2318e-15, -1.31134e-06, 5.2318e-15, 15, -5.2318e-15, 1.31134e-06, -5.2318e-15, -15, 0, 0, 0)
 mesh = ExtResource("5_xf2ku")
+
+[node name="ReloadSoundPlayer" parent="." index="4"]
+stream = ExtResource("6_u5pcr")
+
+[node name="ShotSoundPlayer" parent="." index="5"]
+stream = ExtResource("7_x0lah")

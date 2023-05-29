@@ -2,6 +2,8 @@ extends Control
 
 @onready var main_menu := $VBoxContainer/MainMenu
 @onready var settings_menu := $VBoxContainer/SettingsMenu
+@onready var music_vol_slider := $VBoxContainer/SettingsMenu/MarginContainer/VBoxContainer/MusicVolumeSlider as HSlider
+@onready var sfx_vol_slider := $VBoxContainer/SettingsMenu/MarginContainer/VBoxContainer/SFXVolumeSlider as HSlider
 var game_scene := preload('res://scenes/game.tscn')
 
 

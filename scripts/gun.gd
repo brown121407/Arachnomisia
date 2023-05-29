@@ -51,11 +51,14 @@ func shoot() -> bool:
 	ready_to_shoot = false
 	shot_timer.start()
 	
+	$ShotSoundPlayer.play()
+	
 	return true
 
 
 func reload():
 	if reload_timer.is_stopped():
+		$ReloadSoundPlayer.play()
 		reload_progress = 0
 		reload_timer.start()
 

@@ -46,3 +46,7 @@ wait_time = 0.05
 one_shot = true
 
 [node name="GunMesh" type="MeshInstance3D" parent="."]
+
+[node name="ReloadSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="ShotSoundPlayer" type="AudioStreamPlayer3D" parent="."]

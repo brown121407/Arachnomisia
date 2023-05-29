@@ -22,7 +22,6 @@ func _on_body_entered(body: Node3D):
 			spider = body
 		else: # spider leg
 			spider = body.owner.owner
-		print(spider.health)
 		spider.health -= damage
 	queue_free()
 			

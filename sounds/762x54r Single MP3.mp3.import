@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5flpxy6dqjgg"
+path="res://.godot/imported/762x54r Single MP3.mp3-f6ef601c93db65fdb524cfba1726a4aa.mp3str"
+
+[deps]
+
+source_file="res://sounds/762x54r Single MP3.mp3"
+dest_files=["res://.godot/imported/762x54r Single MP3.mp3-f6ef601c93db65fdb524cfba1726a4aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
