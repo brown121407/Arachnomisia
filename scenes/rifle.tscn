@@ -1,22 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ukmv1um2syjk"]
+[gd_scene load_steps=5 format=3 uid="uid://ukmv1um2syjk"]
 
 [ext_resource type="PackedScene" uid="uid://b7j8ucu2rbex1" path="res://scenes/gun.tscn" id="1_a4t8w"]
 [ext_resource type="Script" path="res://scripts/rifle.gd" id="2_hs6kk"]
 [ext_resource type="Resource" uid="uid://bgfqn5m24r8ev" path="res://resources/rifle_stats.tres" id="3_fu2ya"]
-[ext_resource type="Material" uid="uid://3kq0dcb2mh8f" path="res://resources/wood.tres" id="4_4d7xk"]
-[ext_resource type="Material" uid="uid://6ed5xdm0a8rs" path="res://resources/metal.tres" id="5_s2fjw"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_rkxb0"]
-material = ExtResource("4_4d7xk")
-
-[sub_resource type="BoxMesh" id="BoxMesh_6swpi"]
-material = ExtResource("5_s2fjw")
-
-[sub_resource type="BoxMesh" id="BoxMesh_dvsp1"]
-material = ExtResource("5_s2fjw")
-
-[sub_resource type="BoxMesh" id="BoxMesh_dfala"]
-material = ExtResource("4_4d7xk")
+[ext_resource type="ArrayMesh" uid="uid://bvkm7tfv0jmrd" path="res://guns/machinegun.obj" id="6_ubd5g"]
 
 [node name="Rifle" instance=ExtResource("1_a4t8w")]
 script = ExtResource("2_hs6kk")
@@ -30,26 +17,6 @@ one_shot = true
 [node name="ReloadTimer" parent="." index="1"]
 wait_time = 0.05
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(0.131035, 0, 0, 0, 0.112897, 0, 0, 0, 0.25245, 0, -0.0235048, 0.476966)
-mesh = SubResource("BoxMesh_rkxb0")
-skeleton = NodePath("../Barrel")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(0.0745574, 0, 0, 0, 0.169896, 0, 0, 0, 0.119031, 0, -0.13813, -0.218557)
-mesh = SubResource("BoxMesh_6swpi")
-skeleton = NodePath("../Barrel")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(0.0745574, 0, 0, 0, 0.171281, 0, 0, 0, 0.119031, -6.28233e-05, -0.142247, 0.23498)
-mesh = SubResource("BoxMesh_6swpi")
-skeleton = NodePath("../Barrel")
-
-[node name="Barrel" type="MeshInstance3D" parent="." index="5"]
-transform = Transform3D(0.0745574, 0, 0, 0, 0.0509761, 0, 0, 0, 1.17339, 0, -1.86265e-09, -0.155959)
-mesh = SubResource("BoxMesh_dvsp1")
-
-[node name="Body" type="MeshInstance3D" parent="." index="6"]
-transform = Transform3D(0.13055, 0, 0, 0, 0.0726635, 0, 0, 0, 0.880391, 0, -0.0284497, 0.0533809)
-mesh = SubResource("BoxMesh_dfala")
-skeleton = NodePath("../Barrel")
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-7, 2.44151e-15, -6.11959e-07, 2.44151e-15, 7, -2.44151e-15, 6.11959e-07, -2.44151e-15, -7, 0, 0, 0)
+mesh = ExtResource("6_ubd5g")

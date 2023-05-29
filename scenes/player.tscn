@@ -23,6 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412588, -0.366657, -0.72956
 [node name="Rifle" parent="Head/ShootingHand" instance=ExtResource("2_yqgao")]
 process_mode = 4
 visible = false
-ready_to_shoot = null
 
 [node name="Shotgun" parent="Head/ShootingHand" instance=ExtResource("3_igliv")]

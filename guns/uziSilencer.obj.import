@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://nsjs1lnjewvh"
+path="res://.godot/imported/uziSilencer.obj-d7bdc154a315856d725ffbb1c4061bea.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uziSilencer.obj-d7bdc154a315856d725ffbb1c4061bea.mesh"]
+
+source_file="res://guns/uziSilencer.obj"
+dest_files=["res://.godot/imported/uziSilencer.obj-d7bdc154a315856d725ffbb1c4061bea.mesh", "res://.godot/imported/uziSilencer.obj-d7bdc154a315856d725ffbb1c4061bea.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

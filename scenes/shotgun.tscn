@@ -1,21 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://scb3sed7eju6"]
+[gd_scene load_steps=4 format=3 uid="uid://scb3sed7eju6"]
 
 [ext_resource type="PackedScene" uid="uid://b7j8ucu2rbex1" path="res://scenes/gun.tscn" id="1_iggph"]
 [ext_resource type="Resource" uid="uid://kjlefy6h1y3" path="res://resources/shotgun_stats.tres" id="2_6l2ar"]
-[ext_resource type="Material" uid="uid://3kq0dcb2mh8f" path="res://resources/wood.tres" id="3_rhh3l"]
-[ext_resource type="Material" uid="uid://6ed5xdm0a8rs" path="res://resources/metal.tres" id="4_i6jwm"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_vk2ud"]
-material = ExtResource("3_rhh3l")
-
-[sub_resource type="BoxMesh" id="BoxMesh_xdakp"]
-material = ExtResource("4_i6jwm")
-
-[sub_resource type="BoxMesh" id="BoxMesh_qkyc4"]
-material = ExtResource("3_rhh3l")
-
-[sub_resource type="BoxMesh" id="BoxMesh_xinef"]
-material = ExtResource("4_i6jwm")
+[ext_resource type="ArrayMesh" uid="uid://dy8damm4iixl3" path="res://guns/shotgun.obj" id="5_xf2ku"]
 
 [node name="Shotgun" instance=ExtResource("1_iggph")]
 stats = ExtResource("2_6l2ar")
@@ -28,22 +15,6 @@ one_shot = true
 [node name="ReloadTimer" parent="." index="1"]
 wait_time = 0.05
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(-0.26316, 0, -1.05298e-07, 0, 0.109107, 0, 2.30062e-08, 0, -1.20447, 0.00274172, 0, 0.182786)
-mesh = SubResource("BoxMesh_vk2ud")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(-0.0698977, 0, -1.48749e-07, 0, 0.0740024, 0, 6.11065e-09, 0, -1.70149, -0.057344, 0.0596597, -0.107063)
-mesh = SubResource("BoxMesh_xdakp")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(-0.0698977, 0, -1.48749e-07, 0, 0.0740024, 0, 6.11065e-09, 0, -1.70149, 0.0559731, 0.0596597, -0.107063)
-mesh = SubResource("BoxMesh_xdakp")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="5"]
-transform = Transform3D(-0.163824, 0, -3.53941e-08, 0, 0.194957, 0, 1.4322e-08, 0, -0.404862, 0.00274178, -0.0834971, 0.854584)
-mesh = SubResource("BoxMesh_qkyc4")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="6"]
-transform = Transform3D(-0.326628, 0, -4.53616e-08, 0, 0.139925, 0, 2.85547e-08, 0, -0.518876, 0.00274167, -0.00800706, -0.366279)
-mesh = SubResource("BoxMesh_xinef")
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-15, 5.2318e-15, -1.31134e-06, 5.2318e-15, 15, -5.2318e-15, 1.31134e-06, -5.2318e-15, -15, 0, 0, 0)
+mesh = ExtResource("5_xf2ku")
