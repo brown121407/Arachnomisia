@@ -2,8 +2,10 @@ extends Gun
 
 
 func shoot():
-	print('pew pew')
-	super.shoot()
+	for i in range(0, 3):
+		super.shoot()
+		await shot_timer.timeout
+
 #	var bullet = get_world_3d().direct_space_state
 #	var ray_query_params = PhysicsRayQueryParameters3D.new()
 #	# ray_query_params.from = muzzle.transform.origin

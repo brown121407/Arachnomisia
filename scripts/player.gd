@@ -42,12 +42,16 @@ var active_gun_index: int = 0 :
 		active_gun.stop_reload()
 		active_gun.ammo_changed.disconnect(update_ammo)
 		active_gun.reloading.disconnect(update_reloading)
+		active_gun.visible = false
+		active_gun.process_mode = Node.PROCESS_MODE_DISABLED
 		if value >= len(guns):
 			active_gun_index = 0
 		elif value < 0:
 			active_gun_index = len(guns) - 1
 		else:
 			active_gun_index = value
+		active_gun.visible = true
+		active_gun.process_mode = Node.PROCESS_MODE_INHERIT		
 		ui.ammo = active_gun.stats.current_ammo
 		active_gun.ammo_changed.connect(update_ammo)
 		active_gun.reloading.connect(update_reloading)

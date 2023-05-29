@@ -1,11 +1,15 @@
 class_name Gun
 extends Node3D
 
-@export var stats: GunStats
-@export var ready_to_shoot := true
-@export var weapon_name: String
+
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var shot_timer: Timer = $ShotTimer
+
+var ready_to_shoot: bool :
+	get:
+		return shot_timer.is_stopped()
+@export var stats: GunStats
+@export var weapon_name: String
 
 signal ammo_changed(current: int)
 signal reloading(progress: int)
@@ -20,7 +24,6 @@ var reload_progress := 0 :
 
 func _ready():
 	stats.current_ammo = stats.max_ammo
-	shot_timer.timeout.connect(func (): ready_to_shoot = true)	
 	reload_timer.timeout.connect(track_reload)
 
 func shoot():
