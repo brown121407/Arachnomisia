@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfwsaaqr8sq5a"
+path.s3tc="res://.godot/imported/atlas_n.png-e34b3936471f85b32bf188fa2437d24d.s3tc.ctex"
 path.etc2="res://.godot/imported/atlas_n.png-e34b3936471f85b32bf188fa2437d24d.etc2.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/atlas_n.png"
-dest_files=["res://.godot/imported/atlas_n.png-e34b3936471f85b32bf188fa2437d24d.etc2.ctex"]
+dest_files=["res://.godot/imported/atlas_n.png-e34b3936471f85b32bf188fa2437d24d.s3tc.ctex", "res://.godot/imported/atlas_n.png-e34b3936471f85b32bf188fa2437d24d.etc2.ctex"]
 
 [params]
 

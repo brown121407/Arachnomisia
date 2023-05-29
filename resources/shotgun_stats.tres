@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_0lhjs")
-bullet_damage = 5.0
-max_ammo = 2
+max_ammo = 3
 current_ammo = 0
 reload_time = 0.5

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://01qyxn5qoa36"]
+
+[ext_resource type="PackedScene" uid="uid://bhk4b7jdgp5ot" path="res://scenes/bullet.tscn" id="1_m7lu8"]
+[ext_resource type="ArrayMesh" uid="uid://cl110g2gqanqv" path="res://guns/ammo_shotgun.obj" id="2_dhh11"]
+
+[node name="ShotgunShell" instance=ExtResource("1_m7lu8")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(7.5, -3.05824e-22, -1.3368e-29, 0, -3.27835e-07, 7.5, -3.05824e-22, -7.5, -3.27835e-07, 0, 0, 0)
+mesh = ExtResource("2_dhh11")

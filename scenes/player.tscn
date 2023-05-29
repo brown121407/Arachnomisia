@@ -18,10 +18,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584118, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="ShootingHand" type="Node3D" parent="Head"]
-transform = Transform3D(0.99885, 2.39207e-19, 0.0479433, 0.00223503, 0.998913, -0.0465647, -0.0478911, 0.0466183, 0.997764, 0.412588, -0.23697, -0.729567)
+transform = Transform3D(0.99885, 2.39207e-19, 0.0479433, 0.00223503, 0.998913, -0.0465647, -0.0478911, 0.0466183, 0.997764, 0.412588, -0.23697, -0.477711)
 
 [node name="Rifle" parent="Head/ShootingHand" instance=ExtResource("2_yqgao")]
 process_mode = 4
 visible = false
 
 [node name="Shotgun" parent="Head/ShootingHand" instance=ExtResource("3_igliv")]
+transform = Transform3D(0.999998, 0.00239718, 5.98908e-05, -0.00239718, 0.99875, 0.0499428, 5.98932e-05, -0.0499428, 0.998752, 0, 0, 0)
